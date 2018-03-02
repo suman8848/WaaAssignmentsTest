@@ -22,7 +22,7 @@ public class BookService {
     }
 
     public Book get(int id) {
-        return get(id);
+        return bookDao.get(id);
     }
 
     public void update(int id, Book book) {

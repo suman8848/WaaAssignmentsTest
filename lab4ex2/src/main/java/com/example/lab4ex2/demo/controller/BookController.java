@@ -59,7 +59,9 @@ public class BookController {
 
     @RequestMapping(value = "/books/{id}", method = RequestMethod.GET)
     public String get(@PathVariable int id, Model model) {
+
         model.addAttribute("book", bookService.get(id));
+        System.out.println(""+bookService.get(id));
         return "bookDetail";
     }
 
