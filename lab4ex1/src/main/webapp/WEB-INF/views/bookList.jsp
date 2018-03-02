@@ -21,6 +21,6 @@
     </c:forEach>
 </table>
 
-<a href="addBook.html"> Add a Book</a>
+<a href="/addbooks"> Add a Book</a>
 </body>
 </html>

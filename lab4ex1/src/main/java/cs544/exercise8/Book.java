@@ -1,10 +1,21 @@
 package cs544.exercise8;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class Book {
 	private int id;
+	@NotEmpty
 	private String title;
+//	@Pattern(regexp = "\\d{3}-\\d{10}")
 	private String ISBN;
+	@NotEmpty
 	private String author;
+
+	@Min(value = 0)
 	private double price;
 
 	public Book() {
