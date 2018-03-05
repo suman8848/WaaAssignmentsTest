@@ -1,28 +1,49 @@
 <%--
   Created by IntelliJ IDEA.
   User: sumankhatiwada
-  Date: 3/2/18
-  Time: 8:00 PM
+  Date: 3/4/18
+  Time: 6:13 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
-<head>
-    <title>Welcome</title>
-</head>
-<body>
-
-<h2>Hello world</h2>
-
-<label> <spring:message code = "label.firstName"/></label> <br/>
-<label> <spring:message code = "label.lastName"/></label>
-<p>Please Select One</p>
-<select id="locales">
-    <option>Cars</option>
-    <option>Books</option>
-
+<body style="margin: 0">
+<div><a href="?lang=en">English</a> | <a href="?lang=fr">French</a></div>
+<div style="position: fixed; top: 0; right:10px;">
+    <c:choose>
+        <c:when test="${username == null }">
+            <a href="login">Login</a>
+        </c:when>
+        <c:otherwise>
+            Hello ${username},
+            <a href="logout">Logout</a>
+        </c:otherwise>
+    </c:choose>
+</div>
+<h2>
+    <spring:message code="label.welcome"></spring:message>
+</h2>
+<p>
+    <sec:authorize access="hasRole('ADMIN')">
+<p>ADMIN</p>
+</sec:authorize>
+<sec:authorize access="hasRole('ADMIN') or hasRole('ACCOUNTANT')">
+    <p>ACCOUNTANT</p>
+</sec:authorize>
+<sec:authorize access="hasRole('ADMIN') or hasRole('SALES')">
+    <p>SALES</p>
+</sec:authorize>
+<spring:message code="label.please_select_one"></spring:message>
+<select>
+    <option><spring:message code="label.cars"></spring:message> </option>
+    <option><spring:message code="label.books"></spring:message> </option>
 </select>
+</p>
 </body>
 </html>
