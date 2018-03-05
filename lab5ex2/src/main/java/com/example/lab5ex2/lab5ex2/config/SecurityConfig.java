@@ -1,11 +1,13 @@
 package com.example.lab5ex2.lab5ex2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -39,8 +41,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
 
-        http.authorizeRequests().antMatchers("/welcome", "/login").permitAll().and().formLogin().loginPage("/login")
+        http.authorizeRequests()
+                .antMatchers("/welcome", "/login").permitAll()
+                .antMatchers("/cars","/books").hasRole("ADMIN")
+                .antMatchers("/cars").hasRole("SALES")
+                .antMatchers("/books").hasRole("ACCOUNTANT")
+                .and().formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .defaultSuccessUrl("/welcome").permitAll();
     }
+
+    @Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    }
+
 }
