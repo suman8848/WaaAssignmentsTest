@@ -1,4 +1,4 @@
-package org.springframework.security.samples.config;
+package com.example.lab5ex2.lab5ex2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

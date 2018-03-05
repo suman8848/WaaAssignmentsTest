@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
 @Controller
-@ComponentScan("org.springframework.security.samples.mvc")
 public class LoginController {
 
 
