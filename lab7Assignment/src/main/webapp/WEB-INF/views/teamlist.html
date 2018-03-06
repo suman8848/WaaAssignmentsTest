@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+</head>
+<body>
+
+<h1>Team List</h1>
+<h1 th:text="${data}">data</h1>
+<table>
+    <tr  th:each="team, row: ${teams}">
+        <td th:text="${row.count}">77</td>
+        <td th:text="${team.name}">Name</td>
+        <td th:text="${team.city}">City</td>
+        <td th:text="${team.mascot}">Mascot</td>
+    </tr>
+</table>
+</body>
+</html>
+
+<!--th:class="${row.odd}? 'odd':'even'"-->
+<!--<td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
+<!--<td>-->
+    <!--<span th:text="${#lists.size(prod.comments)}">2</span> comment/s-->
+    <!--<a href="comments.html"-->
+       <!--th:href="@{/product/comments(prodId=${prod.id})}"-->
+       <!--th:if="${not #lists.isEmpty(prod.comments)}">view</a>-->
+<!--</td>-->
