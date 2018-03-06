@@ -20,14 +20,12 @@ public class TeamController {
     public String getTeams( Model model) {
 
         model.addAttribute("teams", teamService.getAllTeams());
-//        System.out.println("LIst team"+ teamService.getAllTeams());
-        model.addAttribute("data","hellosuman");
         return "teamlist";
     }
 
-    @RequestMapping(value = "/addteams", method = RequestMethod.GET)
-//   @GetMapping
-    public String addTeams(@ModelAttribute("team") Team team) {
+
+    @RequestMapping(value = "/teams/addTeam", method = RequestMethod.GET)
+    public String addTeams(Model model, @ModelAttribute("team") Team team) {
         return "addteam";
     }
 

@@ -13,7 +13,6 @@ public class TeamService {
     TeamDao teamDao;
 
     public Collection getAllTeams(){
-        System.out.println("TeamList...."+teamDao.getAll().size());
         return teamDao.getAll();
     }
 
