@@ -14,7 +14,10 @@ public class Team {
     private List<Match> matchesAsHome;
     private List<Match> matchesAsVisitor;
 
-    public Team(int teamKey, String name, String city, String mascot, List<Player> players, String homeUniform, String visitUniform, List<Match> matchesAsHome, List<Match> matchesAsVisitor) {
+    public Team() {
+    }
+
+    public Team(int teamKey, String name, String city, String mascot, List<Player> players, String homeUniform, String visitUniform){ //List<Match> matchesAsHome, List<Match> matchesAsVisitor) {
         this.teamKey = teamKey;
         this.name = name;
         this.city = city;
@@ -22,8 +25,8 @@ public class Team {
         this.players = players;
         this.homeUniform = homeUniform;
         this.visitUniform = visitUniform;
-        this.matchesAsHome = matchesAsHome;
-        this.matchesAsVisitor = matchesAsVisitor;
+//        this.matchesAsHome = matchesAsHome;
+//        this.matchesAsVisitor = matchesAsVisitor;
     }
 
     public int getTeamKey() {
@@ -98,18 +101,18 @@ public class Team {
         this.matchesAsVisitor = matchesAsVisitor;
     }
 
-    @Override
-    public String toString() {
-        return "Team{" +
-                "teamKey=" + teamKey +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", mascot='" + mascot + '\'' +
-                ", players=" + players +
-                ", homeUniform='" + homeUniform + '\'' +
-                ", visitUniform='" + visitUniform + '\'' +
-                ", matchesAsHome=" + matchesAsHome +
-                ", matchesAsVisitor=" + matchesAsVisitor +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Team{" +
+//                "teamKey=" + teamKey +
+//                ", name='" + name + '\'' +
+//                ", city='" + city + '\'' +
+//                ", mascot='" + mascot + '\'' +
+//                ", players=" + players +
+//                ", homeUniform='" + homeUniform + '\'' +
+//                ", visitUniform='" + visitUniform + '\'' +
+//                ", matchesAsHome=" + matchesAsHome +
+//                ", matchesAsVisitor=" + matchesAsVisitor +
+//                '}';
+//    }
 }

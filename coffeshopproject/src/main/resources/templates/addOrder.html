@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Order</title>
+</head>
+<body>
+
+<div>
+    <!--<div th:replace="fragments/menu :: menu"></div>-->
+            <form th:object="${order}" th:action = "@{/order/addOrder/{id}(id=${order.id})}" th:method = "post">
+                <table>
+                    <tr>
+                        <td>Product Description:</td>
+                        <td><input type="text" th:field="*{description}"/></td>
+                        <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td><input type="text" th:field="*{price}"/></td>
+                        <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Type:</td>
+                        <td><select th:field="*{productType}">
+                            <option th:each="product : ${T(com.example.coffeeshop.domain.ProductType).values()}"
+                                    th:value="${product}"
+                                    th:utext="${product}"/>
+                        </select></td>
+                    </tr>
+                </table>
+
+                <input type="submit"  value="Order"/>
+            </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CurrentList Order</title>
+</head>
+<body>
+<h2>Current OrderList</h2>
+<table>
+    <tr th:each="order, row: ${orders}">
+        <!--<td th:text="${order.orderDate}">Date</td>-->
+        <!--<td th:text="${order.person.firstName}">Last Name</td>-->
+
+        <tr th:each="orderline: ${order.orderLines}">
+        <td th:text="${orderline.product.productName}"></td>
+        <td th:text="${orderline.quantity}"></td>
+        <td th:text="${orderline.product.productType}"></td>
+        <td th:text="${orderline.product.price}"></td>
+        <td th:text="${orderline.product.description}"></td>
+    <td>
+        <form th:action="@{/order/deleteOrder/{id}(id=${order.id})}" th:method="post">
+
+            <input type="submit" th:field="*{id}" value="Delete"/>
+        </form>
+        <!--<td><a th:href="@{/order/orderDelete/{id}(id=${order.id})}">Delete Order</a> </td>-->
+    </td>
+    </tr>
+
+    </tr>
+</table>
+<!--<a th:href="@{/order/addOrder}">Order</a>-->
+</body>
+</html>

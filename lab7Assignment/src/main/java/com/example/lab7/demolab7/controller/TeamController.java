@@ -6,9 +6,12 @@ import com.example.lab7.demolab7.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 public class TeamController {
@@ -29,5 +32,20 @@ public class TeamController {
         return "addteam";
     }
 
+
+    @RequestMapping(value = "/teams/addTeam", method = RequestMethod.POST)
+//    @PostMapping
+    public String add(@Valid Team team, BindingResult bindingResult) {
+
+        System.out.println(team);
+        if (!bindingResult.hasErrors()) {
+            teamService.addTeam(team);
+//            bookDao.add(book);
+            return "redirect:/teams";
+        } else {
+            return "/teams/addTeam";
+        }
+
+    }
 
 }

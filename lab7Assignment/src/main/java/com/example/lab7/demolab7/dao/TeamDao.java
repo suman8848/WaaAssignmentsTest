@@ -18,15 +18,15 @@ public class TeamDao {
     private static int teamKey = 1;
     private Map<Integer, Team> teamIds = new HashMap<>();
     private List<Player> players = new ArrayList<>();
-    private List<Match> matchesAtHome = new ArrayList<>();
-    private List<Match> matchesAtVisit = new ArrayList<>();
+//    private List<Match> matchesAtHome = new ArrayList<>();
+//    private List<Match> matchesAtVisit = new ArrayList<>();
 
 
 
 
     public TeamDao() {
 //       players= addPlayers();
-        add(new Team(1,"Arsenal","London","arsenal", players,"Red","Yellow", matchesAtHome,matchesAtVisit));
+        add(new Team(1,"Arsenal","London","arsenal", players,"Red","Yellow"));
 //        add(new Team("C#","1002","Suman",2000));
     }
 

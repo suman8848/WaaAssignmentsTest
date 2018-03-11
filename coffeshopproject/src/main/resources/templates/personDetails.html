@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Product Detail</title>
+</head>
+<body>
+<div>
+    <!--<div th:replace="fragments/menu :: menu"></div>-->
+    <div class="container">
+        <form th:object="${person}" th:action="@{/person/personDetail/{id}(id=${person.id})}" th:method="put">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" th:field="*{firstName}"/></td>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" th:field="*{lastName}"/></td>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}"/></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" th:field="*{address.city}"/></td>
+                    <td th:if="${#fields.hasErrors('address')}" th:errors="*{address.city}"></td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td><input type="text" th:field="*{address.state}"/></td>
+                    <td th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}"></td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td><input type="text" th:field="*{address.zipcode}"/></td>
+                    <td th:if="${#fields.hasErrors('address.zipcode')}" th:errors="*{address.zipcode}"></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" th:field="*{address.country}"/></td>
+                    <td th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}"></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" th:field="*{phone}"/></td>
+                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></td>
+                </tr>
+
+                <tr>
+                    <!--<td><input class="form-check-input" type="checkbox" id="enable" th:field="*{enable}" />Enable</td>-->
+                    <!--<td><input class="form-check-input" type="checkbox" id="disable" th:field="*{enable}" />Disable</td>-->
+                    <!--<div th:if="${isError} == true">-->
+                        <!--<td><input type="radio" value="1" name="enable" th:checked = "*{enable} ==true"/>Enable</td>-->
+                        <!--<td><input type="radio" value="0" name="disable" th:checked = "*{enable}" />Disable</td></p>-->
+
+                    <!--</div>-->
+                    <td th:if="*{enable}">
+                        <td><input type="radio"  value = "1" name="enable" th:checked = "*{enable} == true"/>Enable</td>
+                        <td><input type="radio" value = "0" name="enable" th:checked = "*{enable} == false"/>Disable</td>
+                    </td>
+                    <td th:unless="*{enable}">
+                    <td><input type="radio"  value = "1" name="enable" th:checked = "*{enable}"/>Enable</td>
+                    <td><input type="radio"  value = "0" name="enable" th:checked = "checked"/>Disable</td>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Submit"/>
+        </form>
+        <form th:object="${person}" th:action = "@{/person/deletePerson/{id}(id=${person.id})}" th:method = "post">
+
+            <input type="submit" th:field = "*{id}" value="Delete"/>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

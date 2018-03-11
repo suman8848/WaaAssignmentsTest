@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Products</title>
+</head>
+<body>
+<h2>List of Products</h2>
+
+<table>
+    <tr  th:each="product, row: ${products}">
+        <td th:text="${product.productName}">Name</td>
+        <td th:text="${product.description}">Product Description</td>
+        <td th:text="${product.price}">Product Price</td>
+        <td th:text="${product.productType}">Product Type</td>
+
+        <td><a th:href="@{/product/productDetail/{id}(id=${product.id})}">Edit</a> </td>
+        <td>
+            <form  th:action="@{/order/addToCart/{id}(id=${product.id})}" th:method="post">
+        <!--<td><input type="hidden" th:field="*{product.productName}"/></td>-->
+        <!--<td><input type="hidden" th:field="*{description}"/></td>-->
+        <!--<td><input type="hidden" th:field="*{price}"/></td>-->
+        <!--<td><input type="hidden" th:field="*{productType}"/></td>-->
+                <input type="submit" th:field="*{id}" value="Add to cart"/>
+            </form>
+        </td>
+
+    </tr>
+</table>
+<a th:href="@{/product/addProduct}">Add Product</a>
+
+<h2>Current Cart</h2>
+<table>
+    <tr th:each="order, row: ${cartlist}">
+        <td th:text="${order.orderDate}">Date</td>
+        <!--<td th:text="${order.person.firstName}">Last Name</td>-->
+
+    <tr th:each="orderline: ${order.orderLines}">
+        <td th:text="${orderline.product.productName}"></td>
+        <td th:text="${orderline.quantity}"></td>
+        <td th:text="${orderline.product.productType}"></td>
+        <td th:text="${orderline.product.price}"></td>
+        <td th:text="${orderline.product.description}"></td>
+        <td>
+            <form th:action="@{/order/deleteOrder/{id}(id=${order.id})}" th:method="post">
+
+                <input type="submit" th:field="*{id}" value="Delete"/>
+            </form>
+            <!--<td><a th:href="@{/order/orderDelete/{id}(id=${order.id})}">Delete Order</a> </td>-->
+        </td>
+    </tr>
+
+    </tr>
+</table>
+
+</body>
+</html>

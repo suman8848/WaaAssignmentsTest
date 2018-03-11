@@ -13,11 +13,12 @@
         <td th:text="${team.name}">Name</td>
         <td th:text="${team.city}">City</td>
         <td th:text="${team.mascot}">Mascot</td>
-        <td><a th:href="@{/teams/addTeam}">Add Team</a> </td>
+
         <!--<td><a th:href="@{/addTeam(id=${team.teamKey})}">Edit</a> </td>-->
         <td><a th:href="@{/team/delete(id=${team.teamKey})}">Delete</a> </td>
     </tr>
 </table>
+<a th:href="@{/teams/addTeam}">Add Team</a>
 </body>
 </html>
 

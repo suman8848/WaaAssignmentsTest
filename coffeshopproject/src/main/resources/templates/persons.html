@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Persons</title>
+</head>
+<body>
+<h2>Persons</h2>
+
+<table>
+    <tr  th:each="person, row: ${persons}">
+        <td th:text="${person.firstName}">First Name</td>
+        <td th:text="${person.lastName}">Last Name</td>
+        <td th:text="${person.email}">Email</td>
+        <td th:text="${person.address.city}">City</td>
+        <td th:text="${person.phone}">Phone</td>
+
+        <td><a th:href="@{/person/personDetail/{id}(id=${person.id})}">Edit Person</a> </td>
+    </tr>
+</table>
+<a th:href="@{/person/addPerson}">Add Person</a>
+</body>
+</html>

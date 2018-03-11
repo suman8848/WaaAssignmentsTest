@@ -9,8 +9,9 @@
 <div>
     <!--<div th:replace="fragments/menu :: menu"></div>-->
     <div class="container">
-        <form th:object="${team}" th:action="@{/team/add}" method="post">
+        <form th:object="${team}" th:action="@{/teams/addTeam}" method="post">
             <table>
+
                 <tr>
                     <td>Name:</td>
                     <td><input type="text" th:field="*{name}"/></td>
