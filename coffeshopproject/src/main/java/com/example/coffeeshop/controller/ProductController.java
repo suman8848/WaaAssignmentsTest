@@ -1,9 +1,6 @@
 package com.example.coffeeshop.controller;
 
-import com.example.coffeeshop.domain.Order;
-import com.example.coffeeshop.domain.Orderline;
-import com.example.coffeeshop.domain.Person;
-import com.example.coffeeshop.domain.Product;
+import com.example.coffeeshop.domain.*;
 import com.example.coffeeshop.service.OrderService;
 import com.example.coffeeshop.service.PersonService;
 import com.example.coffeeshop.service.ProductService;
@@ -18,11 +15,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
+    @RequestMapping(value="product/type/{type}", method=RequestMethod.GET)
+    public String findByProductType(@PathVariable("type") String type, Model model) {
+        System.out.println("Hello I am here producttype");
+        ProductType productType = ProductType.valueOf(type.toUpperCase());
+        List<Product> products = productService.findByProductType(productType);
+        model.addAttribute("products", products);
+        return "userindex";
+    }
 
     /*
     Listing products with the help of service

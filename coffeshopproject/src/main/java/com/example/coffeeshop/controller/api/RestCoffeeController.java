@@ -162,8 +162,8 @@ public class RestCoffeeController {
         System.out.println(dateFormat.format(date));
         System.out.println("Order "+ order);
         order.setOrderDate(date);
-        Person p =personService.findByEmail("suman");
-        order.setPerson(p);
+//        Person p =personService.findByEmail("suman");
+//        order.setPerson(p);
 
         Orderline orderline = new Orderline();
         orderline.setQuantity(2);
@@ -174,15 +174,15 @@ public class RestCoffeeController {
         System.out.println("ADDTOCART:::___---"+order);
         orderService.save(order);
 
-        List<Order> orders =orderService.findByPerson(p);
-        System.out.println("ORDERS"+orders);
-        List<Orderline> orderlineList = new ArrayList<>();
-        for(int i =0 ;i<orders.size();i++){
-            Orderline orderlineList1 = orders.get(i).getOrderLines().get(0);
-            orderlineList.add(orderlineList1);
-            System.out.println("Helloooo+++"+orders.get(i).getOrderLines());
-        }
-        System.out.println("SIZZE"+ orderlineList.size());
+//        List<Order> orders =orderService.findByPerson(p);
+//        System.out.println("ORDERS"+orders);
+//        List<Orderline> orderlineList = new ArrayList<>();
+//        for(int i =0 ;i<orders.size();i++){
+//            Orderline orderlineList1 = orders.get(i).getOrderLines().get(0);
+//            orderlineList.add(orderlineList1);
+//            System.out.println("Helloooo+++"+orders.get(i).getOrderLines());
+//        }
+//        System.out.println("SIZZE"+ orderlineList.size());
 
         return null;
     }

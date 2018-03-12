@@ -48,8 +48,8 @@ public class OrderController {
         System.out.println(dateFormat.format(date));
         System.out.println("Order "+ order);
         order.setOrderDate(date);
-        Person p =personService.findByEmail("suman");
-        order.setPerson(p);
+//        Person p =personService.findByEmail("suman");
+//        order.setPerson(p);
 
         Orderline orderline = new Orderline();
         orderline.setQuantity(2);
@@ -71,10 +71,10 @@ public class OrderController {
 
     @GetMapping({"/order/orderLineList"})
     public String getCurrentOrderLineList( Model model) {
-        Person person =personService.findByEmail("suman");
-       List<Order> orders= orderService.findByPerson(person);
-        System.out.println("ORDERSSSSLINEESS::::::::"+orders);
-        model.addAttribute("orders", orders);
+//        Person person =personService.findByEmail("suman");
+//       List<Order> orders= orderService.findByPerson(person);
+//        System.out.println("ORDERSSSSLINEESS::::::::"+orders);
+//        model.addAttribute("orders", orders);
         return "orderLineList";
     }
 

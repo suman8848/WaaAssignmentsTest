@@ -1,26 +1,52 @@
 package com.example.coffeeshop.domain;
 
-import javax.persistence.*;
+import com.example.coffeeshop.domain.Role;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue
     private long id;
 
+    @Column(unique=true)
+    private String email;
 
-    private boolean enable;
-    private String username;
     private String password;
+    private boolean enabled;
 
+    @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @JoinTable(name="user_roles",
+            joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+            inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
+    )
+    private List<Role> roles = new ArrayList<>();
 
-    public String getUsername() {
-        return username;
+    public User() {
+
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -31,6 +57,29 @@ public class User {
         this.password = password;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void addRole(Role role) {
+        if (!this.roles.contains(role)) {
+            this.roles.add(role);
+        }
+    }
+
+    public void removeRole(Role role) {
+        this.roles.remove(role);
+    }
+
     public long getId() {
         return id;
     }
@@ -39,11 +88,12 @@ public class User {
         this.id = id;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public void clearRoles() {
+        for (Role role: roles) {
+            role.getUsers().clear();
+        }
+        roles.clear();
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
+
 }
