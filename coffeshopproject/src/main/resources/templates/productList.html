@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>List of Products</h2>
-
+<h2 th:text="${currentuser}">Hello</h2>
 <table>
     <tr  th:each="product, row: ${products}">
         <td th:text="${product.productName}">Name</td>
@@ -21,7 +21,7 @@
         <!--<td><input type="hidden" th:field="*{description}"/></td>-->
         <!--<td><input type="hidden" th:field="*{price}"/></td>-->
         <!--<td><input type="hidden" th:field="*{productType}"/></td>-->
-                <input type="submit" th:field="*{id}" value="Add to cart"/>
+                <input type="submit" th:field="*{id}" value="Order Now"/>
             </form>
         </td>
 
@@ -29,29 +29,29 @@
 </table>
 <a th:href="@{/product/addProduct}">Add Product</a>
 
-<h2>Current Cart</h2>
-<table>
-    <tr th:each="order, row: ${cartlist}">
-        <td th:text="${order.orderDate}">Date</td>
-        <!--<td th:text="${order.person.firstName}">Last Name</td>-->
+<!--<h2>Current Cart</h2>-->
+<!--<table>-->
+    <!--<tr th:each="order, row: ${cartlist}">-->
+        <!--<td th:text="${order.orderDate}">Date</td>-->
+        <!--&lt;!&ndash;<td th:text="${order.person.firstName}">Last Name</td>&ndash;&gt;-->
 
-    <tr th:each="orderline: ${order.orderLines}">
-        <td th:text="${orderline.product.productName}"></td>
-        <td th:text="${orderline.quantity}"></td>
-        <td th:text="${orderline.product.productType}"></td>
-        <td th:text="${orderline.product.price}"></td>
-        <td th:text="${orderline.product.description}"></td>
-        <td>
-            <form th:action="@{/order/deleteOrder/{id}(id=${order.id})}" th:method="post">
+    <!--<tr th:each="orderline: ${order.orderLines}">-->
+        <!--<td th:text="${orderline.product.productName}"></td>-->
+        <!--<td th:text="${orderline.quantity}"></td>-->
+        <!--<td th:text="${orderline.product.productType}"></td>-->
+        <!--<td th:text="${orderline.product.price}"></td>-->
+        <!--<td th:text="${orderline.product.description}"></td>-->
+        <!--<td>-->
+            <!--<form th:action="@{/order/deleteOrder/{id}(id=${order.id})}" th:method="post">-->
 
-                <input type="submit" th:field="*{id}" value="Delete"/>
-            </form>
-            <!--<td><a th:href="@{/order/orderDelete/{id}(id=${order.id})}">Delete Order</a> </td>-->
-        </td>
-    </tr>
+                <!--<input type="submit" th:field="*{id}" value="Delete"/>-->
+            <!--</form>-->
+            <!--&lt;!&ndash;<td><a th:href="@{/order/orderDelete/{id}(id=${order.id})}">Delete Order</a> </td>&ndash;&gt;-->
+        <!--</td>-->
+    <!--</tr>-->
 
-    </tr>
-</table>
+    <!--</tr>-->
+<!--</table>-->
 
 </body>
 </html>

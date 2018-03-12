@@ -2,11 +2,14 @@ package com.example.coffeeshop.controller;
 
 import com.example.coffeeshop.domain.Order;
 import com.example.coffeeshop.domain.Orderline;
+import com.example.coffeeshop.domain.Person;
 import com.example.coffeeshop.domain.Product;
 import com.example.coffeeshop.service.OrderService;
 import com.example.coffeeshop.service.PersonService;
 import com.example.coffeeshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +30,6 @@ public class ProductController {
      */
     @GetMapping({"/product/products"})
     public String listProduct(Model model) {
-
 
         model.addAttribute("products", productService.getAllProduct());
 //        model.addAttribute("cartlist",mapping1FormObject);

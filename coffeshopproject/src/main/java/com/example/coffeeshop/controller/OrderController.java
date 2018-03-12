@@ -57,13 +57,7 @@ public class OrderController {
         Product pro =productService.getProduct(id);
         orderline.setProduct(pro);
         order.addOrderLine(orderline);
-//        System.out.println("ADDEDTOCART"+order);
-//
-//        List<Orderline> orderlines=order.getOrderLines();
-//        for(Orderline orderline1 : orderlines){
-//            System.out.println("Current Orderlines:"+orderline1);
-//        }
-//        redirectAttributes.addFlashAttribute("cartlist",order);
+        System.out.println("ORDERCA++++"+order);
         orderService.save(order);
         return "redirect:/order/orderLineList";
     }
@@ -77,21 +71,13 @@ public class OrderController {
 
     @GetMapping({"/order/orderLineList"})
     public String getCurrentOrderLineList( Model model) {
-//        orderService.findAll();
-//        System.out.println("I am in orderLine___---"+ email);
         Person person =personService.findByEmail("suman");
        List<Order> orders= orderService.findByPerson(person);
+        System.out.println("ORDERSSSSLINEESS::::::::"+orders);
         model.addAttribute("orders", orders);
         return "orderLineList";
     }
 
-    //    @PostMapping({"person/addPerson"})
-//    public String addPerson(Model model, Person person) {
-//        System.out.println("AddPerson::: "+person);
-//        personService.savePerson(person);
-//        return "redirect:/person/persons";
-//
-//    }
     @PostMapping({"/order/deleteOrder/{id}"})
     public String deleteOrder(@PathVariable int id) {
         Order order = orderService.findById(id);

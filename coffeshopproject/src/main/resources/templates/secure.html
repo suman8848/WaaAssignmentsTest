@@ -5,9 +5,24 @@
 <title>You are in!</title>
 </head>
 <body><h1>You made it!</h1>
-<a th:href="@{/product/products}">See Our Products</a>
-<a th:href="@{/person/persons}">List of users</a>
-<a th:href="@{/order/orderLineList}">Orders</a>
-<a th:href="@{/logout}">Now Logout</a>
+<table>
+    <tr>
+        <div th:switch="${currentuser}">
+            <p th:case="'admin'"><td><a th:href="@{/person/persons}">List of users</a></td>
+            <td><a th:href="@{/logout}">Now Logout</a></td>
+            </p>
+            <p th:case="'suman'"><td><a th:href="@{/product/products}">See Our Products</a></td>
+            <td><a th:href="@{/order/orderLineList}">View Your PastOrders</a></td>
+            <td><a th:href="@{/logout}">Now Logout</a></td>
+            </p>
+            <p th:case="*">User is some other thing</p>
+
+
+
+
+
+        </div>
+    </tr>
+</table>
 </body>
 </html>

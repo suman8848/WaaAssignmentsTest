@@ -18,6 +18,7 @@ public class ProductService   {
 	private ProductRepository productRepository;
 		
 	public Product save(Product product) {
+		System.out.println("Product from service"+product);
 		return productRepository.save(product);
 	}
 

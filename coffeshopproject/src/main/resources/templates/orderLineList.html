@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>CurrentList Order</title>
+    <title>Order Items</title>
 </head>
 <body>
-<h2>Current OrderList</h2>
+<h2>Ordered Items</h2>
 <table>
     <tr th:each="order, row: ${orders}">
-        <!--<td th:text="${order.orderDate}">Date</td>-->
+        <td th:text="${order.orderDate}">Date</td>
         <!--<td th:text="${order.person.firstName}">Last Name</td>-->
 
         <tr th:each="orderline: ${order.orderLines}">

@@ -65,7 +65,7 @@ public class Orderline {
 				"id=" + id +
 				", quantity=" + quantity +
 				", product=" + product +
-				", order=" + order +
+//				 order=" + order +
 				'}';
 	}
 }
