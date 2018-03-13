@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	@Autowired
 //	private LoggingAccessDeniedHandler accessDeniedHandler;
 	@Autowired
-	private DataSource dataSource;
+	private DataSource myDataSource;
 
 	@Value("${person.authentication}")
 	private String personAuthentication;
@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().usersByUsernameQuery(personAuthentication)
 				.passwordEncoder(passwordEncoder())
 				.authoritiesByUsernameQuery(selectPersonQuery)
-				.dataSource(dataSource);
+				.dataSource(myDataSource);
 	}
 
 	@Bean
