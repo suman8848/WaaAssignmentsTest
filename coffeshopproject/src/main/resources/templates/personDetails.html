@@ -8,7 +8,7 @@
 <div>
     <!--<div th:replace="fragments/menu :: menu"></div>-->
     <div class="container">
-        <form th:object="${person}" th:action="@{/person/personDetail/{id}(id=${person.id})}" th:method="put">
+        <form th:object="${person}" th:action="@{/person/personDetail/{id}(id=${person.id})}" th:method="post">
             <table>
                 <tr>
                     <td>First Name:</td>

@@ -11,13 +11,11 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Component("sessionListener")
-public class SessionListener{
+public class SessionHandlerListener {
 
 	@Autowired
 	PersonService service;
-	
-	private String name = "Doan Danh Dat";
-	
+
 	@Autowired
 	HttpSession session;
 	
@@ -46,13 +44,6 @@ public class SessionListener{
         return userName;
     }
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 }
 

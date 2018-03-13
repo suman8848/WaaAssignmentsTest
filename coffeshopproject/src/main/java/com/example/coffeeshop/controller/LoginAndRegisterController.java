@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginAndRegisterController {
 
-
-//    @Autowired
-//    UserService userService;
-
-
     @GetMapping({"/user/login"})
     public String showLoginPage(@ModelAttribute("person") Person person){
         return "login" ;

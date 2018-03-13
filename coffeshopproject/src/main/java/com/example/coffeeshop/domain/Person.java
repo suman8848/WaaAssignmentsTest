@@ -105,7 +105,9 @@ public class Person {
 				", email='" + email + '\'' +
 				", address=" + address +
 				", phone='" + phone + '\'' +
-				", enable=" + enable +
+				", enable='" + enable +'\''+
+				", password='" + password + '\'' +
+				", role=" + role +
 				'}';
 	}
 }

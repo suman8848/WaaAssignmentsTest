@@ -17,12 +17,11 @@ public class AuthenticationListener implements ApplicationListener<Authenticatio
 	HttpSession session;
 	
 	@Autowired
-	PersonService service;
+	PersonService personService;
 	
 	@Override
 	public void onApplicationEvent(AuthenticationSuccessEvent event) {
-		System.out.println(event.getAuthentication().getName() + " logged successully");
-		List<Person> persons = service.findByEmail(event.getAuthentication().getName());
+		List<Person> persons = personService.findByEmail(event.getAuthentication().getName());
 		if (persons.size() == 1) {
 			session.setAttribute("loggedUser", persons.get(0));
 		}

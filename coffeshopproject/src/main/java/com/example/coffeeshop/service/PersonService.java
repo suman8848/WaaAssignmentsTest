@@ -26,22 +26,25 @@ public class PersonService {
 	@Autowired
 	private RoleRepository roleRepository;
 
-//	public Person savePerson(Person person) {
-//		return personRepository.save(person);
-//	}
+	public Person savePerson(Person person) {
+		return personRepository.save(person);
+	}
 
 //	public Person findByEmail(String email) {
 //		return personRepository.findByEmail(email);
 //	}
-public Person savePerson(Person person) {
+public Person updatePerson(Person person) {
 	List<User> users = userRepository.findByEmailAllIgnoreCase(person.getEmail());
-	System.out.println("USERSSSS++++)>>>>>>" + users);
+//	System.out.println("USERSSSS++++)>>>>>>" + users + users.size());
 	User user = null;
 	if (users.size() == 1) {
+		System.out.println("USERRRRRR++++++>>>"+user);
 		user = users.get(0);
+		System.out.println("USERRRRRR++++++>>>"+user);
 	} else {
 		user = new User();
 	}
+
 	Role role = roleRepository.findOne(person.getRole());
 	System.out.println("ROLEEEE>>>>="+role);
 	user.setEmail(person.getEmail());
@@ -51,7 +54,7 @@ public Person savePerson(Person person) {
 	System.out.println("PERSON>>>ROLE>>"+role);
 	user.setEnabled(person.isEnable());
 	userRepository.save(user);
-
+	System.out.println("USERREPOSITORY"+userRepository.findAll());
 	return personRepository.save(person);
 }
 

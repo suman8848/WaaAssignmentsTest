@@ -1,7 +1,5 @@
 package com.example.coffeeshop.domain;
 
-import com.example.coffeeshop.domain.Role;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,5 +93,14 @@ public class User {
         roles.clear();
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+//                ", roles=" + roles +
+                '}';
+    }
 }

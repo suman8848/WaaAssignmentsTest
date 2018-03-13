@@ -90,25 +90,25 @@ public class Order {
 		orderLines.clear();
 	}
 
-
-	@Override
-	public String toString() {
-		return "Order{" +
-				"id=" + id +
-				", orderDate=" + orderDate +
-				", orderLines=" + displayOrderLine() +
-				", person=" + person +
-				'}';
-	}
-
-	private String displayOrderLine() {
-		String orderLinee= "";
-		for(Orderline orderline : orderLines){
-			orderLinee += "Quantity= "+orderline.getQuantity();
-			orderLinee +="Price= " +orderline.getPrice();
-			orderLinee +="ProductName= "+orderline.getProduct().getProductName();
-//			orderLinee +="Order= "+or /derline.getOrder();
-		}
-		return orderLinee;
-	}
+//
+//	@Override
+//	public String toString() {
+//		return "Order{" +
+//				"id=" + id +
+//				", orderDate=" + orderDate +
+//				", orderLines=" + displayOrderLine() +
+//				", person=" + person +
+//				'}';
+//	}
+//
+//	private String displayOrderLine() {
+//		String orderLinee= "";
+//		for(Orderline orderline : orderLines){
+//			orderLinee += "Quantity= "+orderline.getQuantity();
+//			orderLinee +="Price= " +orderline.getPrice();
+//			orderLinee +="ProductName= "+orderline.getProduct().getProductName();
+////			orderLinee +="Order= "+or /derline.getOrder();
+//		}
+//		return orderLinee;
+//	}
 }

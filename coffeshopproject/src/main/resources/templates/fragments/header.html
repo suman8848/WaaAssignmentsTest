@@ -1,23 +1,47 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
 <body>
-<th:block th:fragment="header">
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">
-                    <img th:src="@{/img/logo.png}" alt="memorynotfound logo"/>
-                </a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a th:href="@{/}">Home</a>
-                    </li>
-                </ul>
-            </div>
+<nav th:fragment="header">
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul>
+                <li><a href="/product/breakfast">Order for Breakfast</a></li>
+                <li><a href="/product/lunch">Order for Lunch</a></li>
+                <li><a href="/product/dinner">Order for Dinner</a></li>
+
+            </ul>
+            <ul>
+                <li sec:authorize="isAuthenticated()">
+                    <a href="#" class="dropdown-toggle"
+                       data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span th:text="'You are logged in as ' + ${@sessionListener.person.firstName} + ' ' + ${@sessionListener.person.lastName}"></span>
+                    </a>
+                    <ul>
+                        <li><a href="/user/account/update">My Account</a></li>
+                        <li><a href="/user/order">My Order</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+                <li><a href="/order/getmyorders">My Cart</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown"><a href="#" class="dropdown-toggle"
+                                                                              data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                                              aria-expanded="false">Administration<span class="caret"></span></a>
+                    <ul>
+                        <li><a href="/product/products">Products</a></li>
+                        <li><a href="/order/orders">Orders</a></li>
+                        <li><a href="/person/persons">Users</a></li>
+                    </ul>
+                </li>
+                <li sec:authorize="!isAuthenticated()"><a href="/user/login">Login</a></li>
+            </ul>
         </div>
-    </nav>
-</th:block>
+
+</nav>
 </body>
 </html>

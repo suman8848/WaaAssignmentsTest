@@ -6,14 +6,14 @@
     <title>Coffee shop</title>
 </head>
 <body>
-<h2>I am here</h2>
+<div th:replace="fragments/header :: header"></div>
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-lg-4" th:each="prod : ${products}">
             <h2 th:text="${prod.productName}"></h2>
             <h4>$<span th:text="${prod.price}"></span></h4>
             <p th:text="${prod.description}"></p>
-            <form method="post" th:action="@{'/cart/add/product/' + ${prod.id}}">
+            <form method="post" th:action="@{'/order/addToMyCart/' + ${prod.id}}">
                 <input type="submit" class="btn btn-default" value="Add"/>
             </form>
         </div>

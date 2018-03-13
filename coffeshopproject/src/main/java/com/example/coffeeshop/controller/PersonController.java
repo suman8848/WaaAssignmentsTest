@@ -2,6 +2,7 @@ package com.example.coffeeshop.controller;
 
 
 import com.example.coffeeshop.domain.Person;
+import com.example.coffeeshop.domain.User;
 import com.example.coffeeshop.service.PersonService;
 import com.example.coffeeshop.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class PersonController {
 
     @Autowired
     PersonService personService;
+
 
     /*
     Listing products with the help of service
@@ -46,7 +48,7 @@ public class PersonController {
         return "personDetails";
     }
 
-    @PutMapping({"/person/personDetail/{id}"})
+    @PostMapping({"/person/personDetail/{id}"})
     public String updatePerson(@PathVariable long id, Person personDetails){
         Person person= personService.findById(id);
         System.out.println(" i am in update "+id + "person" + person);
@@ -57,7 +59,7 @@ public class PersonController {
         person.setPhone(personDetails.getPhone());
         person.setEnable(personDetails.isEnable());
         personService.savePerson(person);
-        return "redirect:/person/persons";
+        return "redirect:/";
     }
 
     @PostMapping({"/person/deletePerson/{id}"})

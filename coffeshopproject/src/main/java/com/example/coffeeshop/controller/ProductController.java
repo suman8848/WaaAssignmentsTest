@@ -21,7 +21,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(value="product/type/{type}", method=RequestMethod.GET)
+    @RequestMapping(value="product/{type}", method=RequestMethod.GET)
     public String findByProductType(@PathVariable("type") String type, Model model) {
         System.out.println("Hello I am here producttype");
         ProductType productType = ProductType.valueOf(type.toUpperCase());

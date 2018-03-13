@@ -14,55 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 
 @Controller
-//@SessionAttributes("currentuser")
 public class HomeController {
-
-	@Autowired
-	PersonService personService;
-
-//	@GetMapping({"/"})
-//	public String homePage() {
-//		return "login";
-//	}
 
     @GetMapping({"/", "/index", "/home"})
     public String homePage(Model model) {
-        return "redirect:/product/type/breakfast";
+        return "redirect:/product/lunch";
     }
-
-//	@GetMapping({"/secure"})
-//	public ModelAndView securePage(Model model) {
-//
-//		ModelAndView modelAndView = new ModelAndView();
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		String name = auth.getName();
-//
-//		Person p =personService.findByEmail(name);
-//		if(p!=null) {
-//			model.addAttribute("currentuser", p.getEmail());
-//			modelAndView.addObject("personObj", p.getEmail());
-//		}else if(name.equals("admin")) {
-//			modelAndView.addObject("personObj", name);
-//			model.addAttribute("currentuser", name);
-//		}
-//
-//		modelAndView.setViewName("secure");
-//
-//		return modelAndView;
-//
-////		return "secure";
-//	}
 }
-/*
-Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		if(personService.findByEmail(name)!=null ){
-			System.out.println("YAY I am in");
-			return "secure";
-		}else {
-//		String password = auth.get
-			//get logged in username
-			System.out.println("invalid username");
-			return "redirect:/login";
-		}
- */
