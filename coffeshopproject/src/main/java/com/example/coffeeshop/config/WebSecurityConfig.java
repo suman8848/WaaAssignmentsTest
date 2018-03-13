@@ -28,10 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 
-	@Value("${coffeeshop.person-auth-query}")
-	private String personAuthQuery;
-	@Value("${coffeeshop.person-author-query}")
-	private String personAuthorQuery;
+	@Value("${person.authentication}")
+	private String personAuthentication;
+	@Value("${selectperson-query}")
+	private String selectPersonQuery;
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -60,9 +60,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().usersByUsernameQuery(personAuthQuery)
+		auth.jdbcAuthentication().usersByUsernameQuery(personAuthentication)
 				.passwordEncoder(passwordEncoder())
-				.authoritiesByUsernameQuery(personAuthorQuery)
+				.authoritiesByUsernameQuery(selectPersonQuery)
 				.dataSource(dataSource);
 	}
 
