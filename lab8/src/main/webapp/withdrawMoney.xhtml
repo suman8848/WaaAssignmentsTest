@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Withdraw money</title>
+    </h:head>
+    <h:body>
+	<h1>Withdraw money</h1>
+	<h:form>
+	<h:form>
+			<h:outputLabel>Account Number:</h:outputLabel>
+     	   <h:inputText  converter="javax.faces.Long" value="#{accountBean.accNumber}"></h:inputText> <br/>
+			<h:outputLabel>Amount:</h:outputLabel>
+     	   <h:inputText  converter="javax.faces.Double" value="#{accountBean.amount}"></h:inputText> <br/>
+     	   <h:commandButton value="Submit" actionListener="#{accountBean.withdraw()}" action="index.xhtml"></h:commandButton>
+    	</h:form>
+    	</h:form>
+    </h:body>
+</html>

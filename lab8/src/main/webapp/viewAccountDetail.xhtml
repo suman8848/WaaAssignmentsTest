@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>Account Details</title>
+</h:head>
+<h:body>
+	<h1>Account Details</h1>
+	<h:form>
+		<h:outputLabel>Account Number:</h:outputLabel>
+		<h:outputLabel value="#{accountBean.accNumber}" /><br/>
+		<h:outputLabel>Customer Name:</h:outputLabel> 
+		<h:outputLabel value="#{accountBean.custName}" /><br/>
+		<h:outputLabel>Balance:</h:outputLabel> 
+		<h:outputLabel value="#{accountBean.balance}" />
+	<button jsf:action="index">Return to home</button>	
+	</h:form>
+
+</h:body>
+</html>
